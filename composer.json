@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "alqabali\\Referral\\": "src/"
+            "Alqabali\\Referral\\": "src/"
         }
     },
     "autoload-dev": {
@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "alqabali\\Referral\\ReferralServiceProvider"
+                "Alqabali\\Referral\\ReferralServiceProvider"
             ]
         }
     },
