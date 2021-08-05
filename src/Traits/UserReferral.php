@@ -14,6 +14,7 @@ namespace Alqabali\Referral\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
+use Alqabali\Referral\Models\AffiliateReferral;
 
 trait UserReferral
 {
@@ -24,7 +25,7 @@ trait UserReferral
 
     public function affiliate_refferals()
     {
-        return $this->hasMany(AffiliateRefferal::class,'user_id','id');
+        return $this->hasMany(AffiliateReferral::class,'user_id','id');
     }
 
     public static function scopeReferralExists(Builder $query, $referral)
@@ -37,20 +38,21 @@ trait UserReferral
         parent::boot();
 
         static::creating(function ($model) {
-            if ($referralUserId = Cookie::get('referral_id') && $refferalProgramId = Cookie::get('referral_program')) {
-                $model->affiliate_refferals()->create([
-                    'affiliate_program_id' => $refferalProgramId,
+            if ($affiliate_id = Cookie::get('affiliate_id') && $affiliateProgramId = Cookie::get('affiliate_program')) {
+                $referral_id = AffiliateReferral::create([
+                    'affiliate_program_id' => is_numeric($affiliateProgramId) ? $affiliateProgramId : 0,
                     'status' => 'unpaid',
-                    'user_id' => self::getUserByReferralId($referralUserId)
-                ]);
+                    'user_id' => self::getUserIdByAffiliateId($affiliate_id)
+                ])->id;
+                $model->referral_id = $referral_id;
             }
 
             $model->affiliate_id = self::generateReferral();
         });
     }
 
-    protected static function getUserByReferralId($ref_id){
-        return static::whereReferralId($ref_id)->first();
+    protected static function getUserIdByAffiliateId($affiliate_id){
+        return (new self)::first()->id;
     }
 
     protected static function generateReferral()

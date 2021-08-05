@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AffiliateReferral extends Model
 {
     public $table = 'affiliatereferrals';
+    protected $guarded = ['id'];
     public function user(){
         return $this->belongsTo(config('referral.user_model', 'App\User'));
     }
