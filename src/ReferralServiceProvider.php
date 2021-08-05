@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace alqabali\Referral;
+namespace Alqabali\Referral;
 
 use Illuminate\Support\ServiceProvider;
 
