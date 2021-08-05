@@ -8,7 +8,7 @@ class AffiliateProgram extends Model
 {
     public function refferals()
     {
-        return $this->hasMany(Refferal::class,'affiliate_program_id','id');
+        return $this->hasMany(AffiliateRefferal::class,'affiliate_program_id','id');
     }
 }
 

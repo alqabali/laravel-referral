@@ -22,9 +22,9 @@ trait UserReferral
         return url('/').'/?ref='.$this->affiliate_id.'&prg='.$program_id;
     }
 
-    public function refferals()
+    public function affiliate_refferals()
     {
-        return $this->hasMany(Refferal::class,'user_id','id');
+        return $this->hasMany(AffiliateRefferal::class,'user_id','id');
     }
 
     public static function scopeReferralExists(Builder $query, $referral)
@@ -38,7 +38,7 @@ trait UserReferral
 
         static::creating(function ($model) {
             if ($referralUserId = Cookie::get('referral_id') && $refferalProgramId = Cookie::get('referral_program')) {
-                $model->refferals()->create([
+                $model->affiliate_refferals()->create([
                     'affiliate_program_id' => $refferalProgramId,
                     'status' => 'unpaid',
                     'user_id' => self::getUserByReferralId($referralUserId)

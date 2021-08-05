@@ -62,7 +62,7 @@ class ReferralServiceProvider extends ServiceProvider
         $this->publishes([
             realpath(__DIR__.'/../database/migrations/add_referral_to_users_table.php') => database_path("/migrations/{$timestamp}_add_referral_to_users_table.php"),
             realpath(__DIR__.'/../database/migrations/create_affiliate_programs_table.php') => database_path("/migrations/{$timestamp}_create_affiliate_programs_table.php"),
-            realpath(__DIR__.'/../database/migrations/create_referrals_table.php') => database_path("/migrations/{$timestamp}_create_referrals_table.php"),
+            realpath(__DIR__.'/../database/migrations/create_affiliate_referrals_table.php') => database_path("/migrations/{$timestamp}_create_affiliate_referrals_table.php"),
         ], 'migrations');
     }
 }
