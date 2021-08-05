@@ -25,7 +25,7 @@ class CreateAffiliateReferralsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('affiliate_program_id')->nullable();
             $table->string('status',55);
-            $table->integer('bounty',10)->nullable();
+            $table->integer('bounty')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
