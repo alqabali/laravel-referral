@@ -20,7 +20,7 @@ class CreateAffiliateReferralsTable extends Migration
      */
     public function up()
     {
-        Schema::create('referrals', function (Blueprint $table) {
+        Schema::create('affiliatereferrals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('affiliate_program_id')->nullable();
@@ -43,6 +43,6 @@ class CreateAffiliateReferralsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('affiliateprograms');
+        Schema::dropIfExists('affiliatereferrals');
     }
 }
