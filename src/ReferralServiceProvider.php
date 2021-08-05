@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Questocat\Referral;
+namespace alqabali\Referral;
 
 use Illuminate\Support\ServiceProvider;
 
