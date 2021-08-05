@@ -18,7 +18,7 @@ $ composer require questocat/laravel-referral
 First add service providers into the config/app.php
 
 ```php
-\Questocat\Referral\ReferralServiceProvider::class,
+\Alqabali\Referral\ReferralServiceProvider::class,
 ```
 
 Publish the migrations
@@ -38,7 +38,7 @@ $ php artisan vendor:publish --provider="Alqabali\Referral\ReferralServiceProvid
 Add UserReferral Trait to your User model.
 
 ```php
-use Questocat\Referral\Traits\UserReferral
+use Alqabali\Referral\Traits\UserReferral
 
 class User extends Model
 {
@@ -54,7 +54,7 @@ Assigning CheckReferral Middleware To Routes.
 // Within App\Http\Kernel Class...
 
 protected $routeMiddleware = [
-    'referral' => \Questocat\Referral\Http\Middleware\CheckReferral::class,
+    'referral' => \Alqabali\Referral\Http\Middleware\CheckReferral::class,
 ];
 ```
 
