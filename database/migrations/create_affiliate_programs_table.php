@@ -13,16 +13,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddReferralToUsersTable extends Migration
+class CreateAffiliateProgramsTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('referral_id')->nullable()->index();
-            $table->string('affiliate_id')->unique();
+        Schema::table('affiliateprograms', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->timestamps();
         });
     }
 
@@ -31,9 +33,6 @@ class AddReferralToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('referral_id');
-            $table->dropColumn('affiliate_id');
-        });
+        Schema::dropIfExists('affiliateprograms');
     }
 }
