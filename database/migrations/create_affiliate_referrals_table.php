@@ -33,7 +33,7 @@ class CreateAffiliateReferralsTable extends Migration
             ->onDelete('cascade');
 
             $table->foreign('affiliate_program_id')
-            ->references('id')->on('affiliate_programs')
+            ->references('id')->on('affiliateprograms')
             ->onDelete('cascade');
         });
     }
