@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace alqabali\Referral\Traits;
+namespace Alqabali\Referral\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cookie;
