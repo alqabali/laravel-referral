@@ -17,12 +17,12 @@ class CheckReferral
 {
     public function handle($request, Closure $next)
     {
-        if ($request->hasCookie('referral')) {
+        if ($request->hasCookie('referral_id') && $request->hasCookie('referral_program')) {
             return $next($request);
         }
 
-        if (($ref = $request->query('ref')) && app(config('referral.user_model', 'App\User'))->referralExists($ref)) {
-            return redirect($request->fullUrl())->withCookie(cookie()->forever('referral', $ref));
+        if (($ref = $request->query('ref')) && ($prg = $request->query('prg')) && app(config('referral.user_model', 'App\User'))->referralExists($ref)) {
+            return redirect($request->fullUrl())->withCookie(cookie()->forever('referral_id', $ref)->forever('referral_program',$prg));
         }
 
         return $next($request);
