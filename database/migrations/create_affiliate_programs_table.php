@@ -22,8 +22,8 @@ class CreateAffiliateProgramsTable extends Migration
     {
         Schema::create('affiliateprograms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('name',55);
+            $table->string('slug',55)->unique();
             $table->timestamps();
         });
     }

@@ -21,8 +21,8 @@ class AddReferralToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('referral_id')->nullable()->index();
-            $table->string('affiliate_id')->nullable()->unique();
+            $table->integer('referral_id')->nullable()->index();
+            $table->string('affiliate_id',55)->nullable()->unique();
         });
     }
 
