@@ -24,13 +24,13 @@ First add service providers into the config/app.php
 Publish the migrations
 
 ```bash
-$ php artisan vendor:publish --provider="Questocat\Referral\ReferralServiceProvider" --tag="migrations"
+$ php artisan vendor:publish --provider="Alqabali\Referral\ReferralServiceProvider" --tag="migrations"
 ```
 
 Publish the config
 
 ```bash
-$ php artisan vendor:publish --provider="Questocat\Referral\ReferralServiceProvider" --tag="config"
+$ php artisan vendor:publish --provider="Alqabali\Referral\ReferralServiceProvider" --tag="config"
 ```
 
 ## Setup the model
