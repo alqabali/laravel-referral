@@ -17,9 +17,14 @@ use Illuminate\Support\Str;
 
 trait UserReferral
 {
-    public function getReferralLink()
+    public function getReferralLinkByProgramId($program_id)
     {
-        return url('/').'/?ref='.$this->affiliate_id;
+        return url('/').'/?ref='.$this->affiliate_id.'&prg='.$program_id;
+    }
+
+    public function refferals()
+    {
+        return $this->hasMany(Refferal::class,'user_id','id');
     }
 
     public static function scopeReferralExists(Builder $query, $referral)
@@ -32,12 +37,20 @@ trait UserReferral
         parent::boot();
 
         static::creating(function ($model) {
-            if ($referredBy = Cookie::get('referral')) {
-                $model->referred_by = $referredBy;
+            if ($referralUserId = Cookie::get('referral_id') && $refferalProgramId = Cookie::get('referral_program')) {
+                $model->refferals()->create([
+                    'affiliate_program_id' => $refferalProgramId,
+                    'status' => 'unpaid',
+                    'user_id' => self::getUserByReferralId($referralUserId)
+                ]);
             }
 
             $model->affiliate_id = self::generateReferral();
         });
+    }
+
+    protected static function getUserByReferralId($ref_id){
+        return static::whereReferralId($ref_id)->first();
     }
 
     protected static function generateReferral()
