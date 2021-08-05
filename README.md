@@ -1,6 +1,6 @@
 # laravel-referral
 
-A Referral System With Laravel
+A Referral System With Laravel 8.x
 
 [![StyleCI](https://styleci.io/repos/115917817/shield?branch=master)](https://styleci.io/repos/115917817)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/questocat/laravel-referral/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/questocat/laravel-referral/?branch=master)
